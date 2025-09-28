@@ -11,6 +11,5 @@ services:
       - ./:/app/
     entrypoint: [
       "python3",
-      "-m", "nllb_serve",
-      "-mi", "facebook/nllb-200-3.3B"
+      "-m", "nllb_serve"
     ]
