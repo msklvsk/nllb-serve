@@ -1,8 +1,12 @@
-FROM python:3.8.14-slim-buster
+FROM python:3.11-slim-bookworm
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Update base image and install security updates
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 

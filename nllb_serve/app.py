@@ -151,7 +151,7 @@ def attach_translate_route(
                 return "Sentence splitter for this langauges is not availabe", 400
             sources, index = sentence_splitter(src_lang, sources)
 
-        max_length = 80
+        max_length = 180
         inputs = tokenizer(sources, return_tensors="pt", padding=True)
         inputs = {k: v.to(device) for k, v in inputs.items()}
 
