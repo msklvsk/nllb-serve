@@ -1,6 +1,5 @@
 FROM python:3.11-slim-bookworm
 
-# Update base image and install security updates
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
@@ -12,9 +11,8 @@ WORKDIR /app
 
 RUN pip3 install --upgrade pip
 
-COPY ./requirements.txt ./requirements.txt
+COPY . /app
+RUN pip install .
 
-# Install package from source code
-RUN pip3 install -r ./requirements.txt
-
-EXPOSE 5001
+EXPOSE 6060
+ENTRYPOINT ["python3", "-m", "nllb_serve"]
